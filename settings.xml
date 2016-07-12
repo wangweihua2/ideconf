@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+  
+	<localRepository>D:\apache-maven-3.1.1\repoCloudsop</localRepository>
+	<pluginGroups>
+		<!-- pluginGroup | Specifies a further group identifier to use for plugin lookup. <pluginGroup>com.your.plugins</pluginGroup> -->
+		<pluginGroup>org.apache.maven.plugins</pluginGroup>
+		<pluginGroup>org.codehaus.mojo</pluginGroup>
+    <pluginGroup>org.sonarsource.scanner.maven</pluginGroup>
+	</pluginGroups>
+	<proxies>
+		<!--proxy>
+			<id>optional</id>
+			<active>true</active>
+			<protocol>http</protocol>
+			<username>z00284328</username>
+			<password>igetup&#64;8</password>
+			<host>proxynj.huawei.com</host>
+			<port>8080</port>
+			<nonProxyHosts>localhost|127.0.0.1|10.67.198.129|10.67.252.73</nonProxyHosts>
+		</proxy-->
+	</proxies>
+  <servers>
+    <server>
+      <id>releases</id>
+      <username>deployment</username>
+      <password>deployment123</password>
+    </server>
+	<server>
+      <id>snapshots</id>
+      <username>deployment</username>
+      <password>deployment123</password>
+    </server>
+  </servers>
+  
+  <profiles>
+    <profile>
+      <id>sonar</id>
+      <properties>
+       <sonar.jdbc.url>jdbc:mysql://10.67.144.198:3306/sonar?useUnicode=true&amp;characterEncoding=utf8</sonar.jdbc.url>
+       <sonar.jdbc.driver>com.mysql.jdbc.Driver</sonar.jdbc.driver>
+       <sonar.jdbc.username>sonar</sonar.jdbc.username>
+       <sonar.jdbc.password>sonar</sonar.jdbc.password>
+       <sonar.host.url>http://10.67.144.198:9000</sonar.host.url> 
+     </properties>
+  </profile>
+
+    <profile>
+      <id>turmeric</id>
+      <repositories>
+        <repository>
+          <id>central</id>
+          <name>Central Repository</name>
+          <url>http://10.67.144.199:8081/nexus/content/groups/OPEN-O_MAIN_Release/</url>
+          <releases>
+            <enabled>true</enabled>
+            <updatePolicy>always</updatePolicy>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+            <updatePolicy>daily</updatePolicy>
+          </snapshots>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <id>central</id>
+          <name>Central Repository</name>
+          <url>http://10.67.144.199:8081/nexus/content/groups/OPEN-O_MAIN_Release/</url>
+          <releases>
+            <enabled>true</enabled>
+            <updatePolicy>always</updatePolicy>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+            <updatePolicy>daily</updatePolicy>
+          </snapshots>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
+  </profiles>
+  <activeProfiles>
+    <activeProfile>turmeric</activeProfile>
+    <activeProfile>sonar</activeProfile>
+  </activeProfiles>
+</settings>
